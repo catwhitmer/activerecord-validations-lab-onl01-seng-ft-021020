@@ -3,5 +3,12 @@ class Post < ActiveRecord::Base
   validates :content, length: { minimum: 250 }
   validates :summary, length: { maximum: 250 }
   validates :category, inclusion: {in: ["Fiction", "Non-Fiction"]}
-  validates_with TitleValidator, on: :create
+  validate :clickbait
+
+  def title_must_be_clickbait
+    if title && !title.include?("Won't Believe" || "Secret" ||
+      "Top [number]" || "Guess")
+      errors.add(:title, "Must be clickbait-y")
+    end
+  end
 end
