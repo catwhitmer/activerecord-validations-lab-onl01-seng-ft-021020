@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   validates :content, length: { minimum: 250 }
   validates :summary, length: { maximum: 250 }
   validates :category, inclusion: {in: ["Fiction", "Non-Fiction"]}
+  validate.clickbait
   
   def clickbait(record)
     unless record.title.match?("Won't Believe" || "Secret" || "Top[number]" || "Guess")
