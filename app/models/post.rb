@@ -8,4 +8,5 @@ class Post < ActiveRecord::Base
     unless record.title.match?("Won't Believe" || "Secret" || "Top[number]" || "Guess")
       record.errors[:title] << "Please use only those statements in your title!"
     end
+  end
 end
