@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
   validates :category, inclusion: { in: [Fiction, Non-Fiction] }
   
   def validate(record)
-    unless record.title.match?(/flatironschool.com/)
-      record.errors[:email] << "We're only allowed to have people who work for the company in the database!"
+    unless record.title.match?("Won't Believe" || "Secret" || "Top[number]" || "Guess")
+      record.errors[:title] << "We're only allowed to have people who work for the company in the database!"
 end
