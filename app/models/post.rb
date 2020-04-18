@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
   
   def validate(record)
     unless record.title.match?("Won't Believe" || "Secret" || "Top[number]" || "Guess")
-      record.errors[:title] << "We're only allowed to have people who work for the company in the database!"
+      record.errors[:title] << "Please use only those statements in your title!"
 end
